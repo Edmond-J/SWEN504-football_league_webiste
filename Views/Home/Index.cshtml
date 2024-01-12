@@ -1,8 +1,68 @@
-﻿@{
+﻿@model IEnumerable<TeamPartnerWebApp.Models.Team>
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
+@* <div class="text-center">
+    <h1 class="display-4">Welcome Edmond</h1>
     <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div> *@
+
+<div class="home-content">
+    <div class="content-block left-block">
+        <div class="image-frame">
+            <div class="left-header">
+                <img class="left-header_image" height="40" src="@Url.Content("~/resource/UK League-shield.png")" alt="logo" />
+                <div class="left-header_title">Week 7</div>
+            </div>
+        </div>
+        <p class="match-date">Sunday 21 January</p>
+            @for (int i=0;i+1<Model.Count();i++) {
+                Random random = new Random();
+                <div class="match-arrange">
+                    @{
+                    var host = Model.ElementAt(i);
+                    var guest = Model.ElementAt(i+1);
+                    }
+                <span class="match-team">@host.TeamName.Substring(0,3).ToUpper()</span>
+                <img class="match-team_image" height="40" src="@Url.Content("~/resource/teams/"+host.LogoPath)" alt="image"/>
+                <span class="match-time">@($"{random.Next(0, 24):D2}:{random.Next(0, 60):D2}")</span>
+                <img class="match-team_image" height="40" src="@Url.Content("~/resource/teams/"+guest.LogoPath)" alt="image"/>
+                <span class="match-team">@guest.TeamName.Substring(0, 3).ToUpper()</span>
+                @{i++;}
+                </div>
+                <br />
+            }
+      <hr />
+    </div>
+    <div class="content-block middle-block">
+        <div class="news-block">
+            <div class="middle_image-frame">
+                <img class="middle_image" src="@Url.Content("~/resource/news/Richarlison.jpg")" alt="image"/>
+            </div>
+            <p class="news-title"> Best FPL team for Gameweek 21</p>
+            <hr />
+            <p class="news-abstract">Spurs' Richarlison named in best XI that line up in 3-5-2 formation, but who's been named captain?</p>
+            <p class="news-date">@DateTime.Now.ToString("yyyy-MM-dd")</p>
+        </div>
+            <br />
+            <br />
+        <div class="news-block">
+            <div class="image-frame">
+                <img class="middle_image" src="@Url.Content("~/resource/news/Mohamed-Salah.webp")" alt="image"/>
+            </div>
+            <p class="news-title"> Which players have the most assists in 2023/24?</p>
+            <hr />
+            <p class="news-abstract">Find out which players have set up the most goals in the Premier League this season</p>
+            <p class="news-date">@DateTime.Now.ToString("yyyy-MM-dd")</p>
+        </div>
+            <br />
+            <br />
+    </div>
+    <div class="content-block right-block">
+@*         <p>Disclaimer:</p>
+        <p>The images on this site are taken from the official Premier League website and are for learning purposes only. </p>
+        <a href="https://www.premierleague.com/" target="_blank">https://www.premierleague.com/</a> *@
+    </div>
 </div>
