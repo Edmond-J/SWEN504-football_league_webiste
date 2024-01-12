@@ -1,0 +1,55 @@
+﻿@model IEnumerable<TeamPartnerWebApp.Models.Team>
+
+@{
+	ViewData["Title"] = "Index";
+}
+@if (!string.IsNullOrEmpty(ViewData["SearchPhase"]?.ToString())) {
+		<h3>Search Result for Team(s) with: "@ViewData["SearchPhase"]"</h3>
+} else {
+	<h1>All Teams</h1>
+}
+<br />
+<p>
+	<a asp-action="Create">New Team</a>
+</p>
+<table class="table">
+	<thead>
+		<tr>
+			<th>Club</th>
+			<th>City</th>
+			<th>Coach</th>
+			<th>Players</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var item in Model) {
+			<tr>
+				<td>
+					<img height="25px" src="@Url.Content("~/resource/teams/"+item.LogoPath)"/>
+					<a href="@Url.Action("Details", "Teams", new { id = item.TeamId })">
+					@Html.DisplayFor(modelItem => item.TeamName)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.City)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.Coach)
+				</td>
+				<td>
+					@(item.Players != null ? item.Players.Count : 0)
+				</td>
+				<td>
+					<a asp-action="Edit" asp-route-id="@item.TeamId" style="margin-right: 20px;">
+					<img height="25px" style="opacity:0.7;" src="@Url.Content("~/resource/edit.png")"/></a>
+					<a asp-action="Delete" asp-route-id="@item.TeamId">
+					<img height="25px" style="opacity:0.7;" src="@Url.Content("~/resource/delete.png")"/>
+					</a>
+				</td>
+			</tr>
+		}
+	</tbody>
+</table>
+@if (!string.IsNullOrEmpty(ViewData["SearchPhase"]?.ToString())) {
+			<a asp-action="Index">Back to All Teams</a>
+}

@@ -1,0 +1,67 @@
+﻿@model TeamPartnerWebApp.Models.Player
+
+@{
+	ViewData["Title"] = "Details";
+}
+<div class="play-detail-header">
+	@if (Model.PhotoPath == null) {
+		<img height=300px src="@Url.Content("~/resource/Photo-Missing.png")" alt="player head"/>
+	} else {
+		<img height=300px src="@Url.Content("~/resource/players/"+ @Model.PhotoPath)" alt="player head"/>
+	}
+	<h1 class="player-name">@Model.PlayerName</h1>
+	<div class="player-number-large">@Model.Number</div>
+</div>
+<div>
+	<br>
+	<h5>Overview</h5>
+	<hr />
+	<dl class="row">
+		<dt class = "col-sm-2">
+			Player Name
+		</dt>
+		<dd class = "col-sm-10">
+			@Html.DisplayFor(model => model.PlayerName)
+		</dd>
+		<dt class = "col-sm-2">
+			Height(cm)
+		</dt>
+		<dd class = "col-sm-10">
+			@Html.DisplayFor(model => model.Hight)
+		</dd>
+		<dt class = "col-sm-2">
+			Age
+		</dt>
+		<dd class = "col-sm-10">
+			@Html.DisplayFor(model => model.Age)
+		</dd>
+		<dt class = "col-sm-2">
+			Club
+		</dt>
+		<dd class = "col-sm-10">
+			@Html.DisplayFor(model => model.Team.TeamName)
+		</dd>
+		<dt class = "col-sm-2">
+			Number
+		</dt>
+		<dd class = "col-sm-10">
+			@Html.DisplayFor(model => model.Number)
+		</dd>
+		<dt class = "col-sm-2">
+			Position
+		</dt>
+		<dd class = "col-sm-10">
+			@Html.DisplayFor(model => model.Position)
+		</dd>
+		@*         <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.PhotoPath)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PhotoPath)
+        </dd> *@
+	</dl>
+</div>
+<div>
+	<a asp-action="Edit" asp-route-id="@Model?.PlayerId">Edit</a> |
+	<a asp-action="Index">Back to List</a>
+</div>

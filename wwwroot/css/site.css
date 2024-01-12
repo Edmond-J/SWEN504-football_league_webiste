@@ -1,0 +1,116 @@
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+    /*    background-color: lightgray;*/
+}
+
+.form-control {
+    margin-bottom: 10px;
+    margin-top: 5px;
+}
+
+.form-select {
+    /*appearance: menulist-button;*/
+}
+
+.play-detail-header, .team-detail-header {
+    display: flex;
+    gap: 50px;
+    /*    width: 100%;*/
+    align-items: center;
+    background-color: silver;
+    border-radius: 30px;
+    padding: 20px;
+    /*    justify-content: space-between;*/
+}
+
+.play-detail-header {
+    padding-bottom: 0;
+}
+
+.player-name, .team-name {
+    flex: 1;
+    font-size: 4rem;
+    font-family: 'Felix Titling'
+}
+
+.player-number-large {
+    /* position: absolute;
+    z-index: 0;
+    top: 2.5rem;
+    line-height: 20rem;
+    right: 20rem;*/
+    font-size: 12rem;
+    font-weight: revert;
+    align-self: flex-end;
+    font-family: Cinzel;
+    color: #58135E;
+    margin-right: 50px;
+    /*    font-family: 'PremierSans-Heavy', Arial, 'Helvetica Neue', Helvetica, sans-serif;*/
+}
+
+.player-header {
+    display: block;
+    max-width: 40%;
+    max-height: 40%;
+    margin-right: 0;
+    margin-left: auto;
+}
+
+.btn-primary {
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+
+.nav-item {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+/*.nav-link btn btn-link text-dark {
+    background-color: cadetblue;
+}*/
+
+.container-fluid {
+    background-color: #37003C;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: cornsilk;
+}
+
+    .navbar-light .navbar-nav .nav-link:hover, .navbar-light .navbar-nav .nav-link:focus {
+        color: darkkhaki;
+    }
+
+.navbar-light .navbar-brand {
+    color: cornsilk;
+}
+
+    .navbar-light .navbar-brand:hover, .navbar-light .navbar-brand:focus {
+        color: darkkhaki;
+    }
+
+.form-group.search-bar {
+    display: flex;
+    gap: 20px;
+    /*    width: 100%;*/
+    align-items: center;
+}

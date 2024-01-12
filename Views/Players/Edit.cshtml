@@ -1,0 +1,83 @@
+﻿@model TeamPartnerWebApp.Models.Player
+
+@{
+    ViewData["Title"] = "Edit";
+}
+@using (Html.BeginForm("Edit", "Players", FormMethod.Post, new { enctype = "multipart/form-data" })) {
+<h1>Edit</h1>
+
+<h4>Player</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="PlayerId" />
+            <div class="form-group">
+                <label asp-for="PlayerName" class="control-label">Player Name</label>
+                <input asp-for="PlayerName" class="form-control" />
+                <span asp-validation-for="PlayerName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Hight" class="control-label">Height(cm)</label>
+                <input asp-for="Hight" class="form-control" />
+                <span asp-validation-for="Hight" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="YearOfBirth" class="control-label">Year Of Birth</label>
+                <input asp-for="YearOfBirth" class="form-control" />
+                <span asp-validation-for="YearOfBirth" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TeamId" class="control-label">Club</label>
+                @* <input asp-for="Team" class="form-control" /> *@
+                <select asp-for="TeamId" class="form-control form-select" asp-items="@(new SelectList(ViewBag.Teams, "Value", "Text"))">
+                <option value="">Select Club</option>
+                </select>
+                <span asp-validation-for="TeamId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Number" class="control-label"></label>
+                <input asp-for="Number" class="form-control" />
+                <span asp-validation-for="Number" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Position" class="control-label"></label>
+                @* <input asp-for="Position" class="form-control" /> *@
+                <select asp-for="Position" class="form-control form-select">
+                <option value="">Select Position</option>
+                    @foreach (var value in Enum.GetValues(typeof(TeamPartnerWebApp.Models.Position))) {
+                    <option value="@value">@value</option>
+                    }
+                </select>
+                <span asp-validation-for="Position" class="text-danger"></span>
+            </div>
+            <div class="form-group" style="display: none;">
+                <label asp-for="PhotoPath" class="control-label"></label>
+                <input asp-for="PhotoPath" class="form-control"/>
+                <span asp-validation-for="PhotoPath" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Image" class="control-label">Photo</label>
+                <input asp-for="Image" type="file" class="form-control" />
+                @if (!string.IsNullOrEmpty(Model.PhotoPath)) {
+                   <label class="control-label">Current photo: @(Model.PhotoPath)</label>
+                } else {
+                <span>Photo not set</span>
+                }
+                <span asp-validation-for="Image" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+}
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

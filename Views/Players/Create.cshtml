@@ -1,0 +1,76 @@
+﻿
+@model TeamPartnerWebApp.Models.Player
+
+@{
+	ViewData["Title"] = "Create";
+}
+@using (Html.BeginForm("Create", "Players", FormMethod.Post, new { enctype = "multipart/form-data" })) {
+	<h1>Create</h1>
+
+	<h4>Player</h4>
+	<hr />
+	<div class="row">
+		<div class="col-md-4">
+			<form asp-action="Create">
+				<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+				<div class="form-group">
+					<label asp-for="PlayerName" class="control-label">Player Name</label>
+					<input asp-for="PlayerName" class="form-control" />
+					<span asp-validation-for="PlayerName" class="text-danger"></span>
+				</div>
+				<div class="form-group">
+					<label asp-for="Hight" class="control-label">Height(cm)</label>
+					<input asp-for="Hight" value=180 class="form-control" />
+					<span asp-validation-for="Hight" class="text-danger"></span>
+				</div>
+				<div class="form-group">
+					<label asp-for="YearOfBirth" class="control-label">Year Of Birth</label>
+					<input asp-for="YearOfBirth" value=1998 class="form-control" />
+					<span asp-validation-for="YearOfBirth" class="text-danger"></span>
+				</div>
+				<div class="form-group">
+					<label asp-for="TeamId" class="control-label">Club</label>
+					@* <input asp-for="Team" class="form-control" /> *@
+					<select asp-for="TeamId" class="form-control form-select" asp-items="@(new SelectList(ViewBag.Teams, "Value", "Text"))">
+					<option value="">Select Club</option>
+					</select>
+					<span asp-validation-for="TeamId" class="text-danger"></span>
+				</div>
+				<div class="form-group">
+					<label asp-for="Number" class="control-label"></label>
+					<input asp-for="Number" value=9 class="form-control" />
+					<span asp-validation-for="Number" class="text-danger"></span>
+				</div>
+				<div class="form-group">
+					<label asp-for="Position" class="control-label"></label>
+					<select asp-for="Position" class="form-control form-select">
+					<option value="">Select Position</option>
+						@foreach (var value in Enum.GetValues(typeof(TeamPartnerWebApp.Models.Position))) {
+						<option value="@value">@value</option>
+						}
+					</select>
+					@* <input asp-for="Position" class="form-control" /> *@
+					<span asp-validation-for="Position" class="text-danger"></span>
+				</div>
+				<div class="form-group">
+					<label asp-for="Image" class="control-label">Photo</label>
+					<input asp-for="Image" type="file"  class="form-control" />
+					@* <input type="submit" value="Upload" /> *@
+					<span asp-validation-for="Image" class="text-danger"></span>
+				</div>
+				<div class="form-group">
+					<input type="submit" value="Create" class="btn btn-primary" />
+				</div>
+			</form>
+		</div>
+	</div>
+
+	<div>
+		<a asp-action="Index">Back to List</a>
+	</div>
+}
+@section Scripts {
+	@{
+		await Html.RenderPartialAsync("_ValidationScriptsPartial");
+	}
+}

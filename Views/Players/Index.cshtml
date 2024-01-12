@@ -1,0 +1,65 @@
+﻿@model IEnumerable<TeamPartnerWebApp.Models.Player>
+
+@{
+    ViewData["Title"] = "Index";
+}
+@if (!string.IsNullOrEmpty(ViewData["SearchPhase"]?.ToString()))
+{
+    <h3>Search Result for Player(s) with: "@ViewData["SearchPhase"]"</h3>
+} else {
+    <h1>All Players</h1>
+}
+<br />
+<p>
+    <a asp-action="Create">New Player</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Player Name</th>
+            <th>Height(cm) </th>
+            <th>Age</th>
+            <th>Club</th>
+            <th>Number</th>
+            <th>Position</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                <a href="@Url.Action("Details", "Players", new { id = item.PlayerId })">
+                @Html.DisplayFor(modelItem => item.PlayerName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Hight)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Age)
+            </td>
+            <td>
+                <a href="@Url.Action("Details", "Teams", new { id = item.TeamId })">
+                @Html.DisplayFor(modelItem => item.Team.TeamName)
+            </td> 
+            <td>
+                @Html.DisplayFor(modelItem => item.Number)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Position)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.PlayerId" style="margin-right: 20px;">
+                  <img height="25px" style="opacity:0.7;" src="@Url.Content("~/resource/edit.png")"/></a>
+                @* <a asp-action="Details" asp-route-id="@item.PlayerId">Details</a> | *@
+                <a asp-action="Delete" asp-route-id="@item.PlayerId">
+                  <img height="25px" style="opacity:0.7;" src="@Url.Content("~/resource/delete.png")"/></a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+@if (!string.IsNullOrEmpty(ViewData["SearchPhase"]?.ToString())) {
+        <a asp-action="Index">Back to All Players</a>
+}
