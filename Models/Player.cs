@@ -26,7 +26,6 @@ namespace TeamPartnerWebApp.Models {
         public int TeamId { get; set; }
 
         public Team? Team { get; set; }
-
         public int Number { get; set; }
         public Position Position { get; set; }
         public string? PhotoPath { get; set; }

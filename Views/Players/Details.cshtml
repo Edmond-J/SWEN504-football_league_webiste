@@ -3,6 +3,9 @@
 @{
 	ViewData["Title"] = "Details";
 }
+@* <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> *@
+<link href="https://fonts.googleapis.com/css2?family=Bungee+Spice&family=Cinzel+Decorative&display=swap" rel="stylesheet">
 <div class="play-detail-header">
 	@if (Model.PhotoPath == null) {
 		<img height=300px src="@Url.Content("~/resource/Photo-Missing.png")" alt="player head"/>
@@ -39,7 +42,9 @@
 			Club
 		</dt>
 		<dd class = "col-sm-10">
+			<a href="@Url.Action("Details", "Teams", new { id = Model.TeamId })">
 			@Html.DisplayFor(model => model.Team.TeamName)
+			</a>
 		</dd>
 		<dt class = "col-sm-2">
 			Number

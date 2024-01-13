@@ -49,7 +49,8 @@ body {
 .player-name, .team-name {
     flex: 1;
     font-size: 4rem;
-    font-family: 'Felix Titling'
+    /*    font-family: 'Felix Titling'*/
+    font-family: 'Cinzel Decorative', serif;
 }
 
 .player-number-large {
@@ -58,10 +59,11 @@ body {
     top: 2.5rem;
     line-height: 20rem;
     right: 20rem;*/
-    font-size: 12rem;
+    font-size: 10rem;
     font-weight: revert;
     align-self: flex-end;
-    font-family: Cinzel;
+    /*    font-family: Cinzel;*/
+    font-family: 'Bungee Spice', sans-serif;
     color: #58135E;
     margin-right: 50px;
     /*    font-family: 'PremierSans-Heavy', Arial, 'Helvetica Neue', Helvetica, sans-serif;*/
@@ -144,7 +146,7 @@ body {
     /*    overflow: hidden;*/
 }
 
-.right-block {
+/*.right-block {
     flex: 1;
     height: 100vh;
     overflow: hidden;
@@ -152,7 +154,7 @@ body {
     box-sizing: border-box;
     box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.3);
     padding: 10px;
-}
+}*/
 
 .left-header {
     position: relative;
@@ -169,10 +171,10 @@ body {
 }
 
 .left-header_title {
-    font-size: 2rem;
+    font-size: 1.8rem;
     line-height: 3rem;
-    font-family: Cambria;
-    /*    font-family: "PremierSans-Heavy";*/
+    /*    font-family: Cambria;*/
+    font-family: 'Tenor Sans', sans-serif;
     color: white;
     text-align: center;
 }
@@ -200,7 +202,8 @@ body {
     }
 
 .match-date {
-    font-family: Cambria;
+    /*    font-family: Cambria;*/
+    font-family: 'Tenor Sans', sans-serif;
     font-size: 1.5rem;
     color: #37003C;
 }
@@ -246,11 +249,39 @@ body {
 }
 
 .news-title {
-    font-family: Cambria;
+    /*    font-family: Cambria;*/
+    font-family: 'Playfair Display', serif;
     font-size: 2rem;
     color: #37003C;
     /*    color: white;*/
 }
 
 .news-abstract {
+}
+
+.right-block_table {
+    text-align: left;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+    .right-block_table tr {
+        border-bottom: 1px solid #ddd;
+    }
+
+    .right-block_table td, .right-block_table th {
+        padding: 8px;
+        text-align: left;
+    }
+
+.right-block_table_thread {
+    font-size: 0.8rem;
+    color: #37003C;
+}
+
+.no-wrap {
+    max-width: 130px;
+    white-space: nowrap; /* 禁止文字换行，应用到包含文字的元素 */
+    overflow: hidden; /* 隐藏超过部分的文字 */
+    text-overflow: ellipsis; /* 在溢出时显示省略号 */
 }

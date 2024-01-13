@@ -24,7 +24,7 @@ namespace TeamPartnerWebApp.Controllers {
             return View(await _context.Team.Include(t => t.Players).ToListAsync());
         }
 
-        // GET: Teams/Details/5
+        // GET: Teams/Details
         public async Task<IActionResult> Details(int? id) {
             if (id == null) {
                 return NotFound();
@@ -53,7 +53,7 @@ namespace TeamPartnerWebApp.Controllers {
             return View(team);
         }
 
-        // GET: Teams/Create
+        [Authorize]
         public IActionResult Create() {
             var players = _context.Player.Include(p => p.Team).Select(t => new { Value = t.PlayerName, Text = t.PlayerName }).ToList();
             ViewBag.AllPlayers = players;
@@ -61,20 +61,17 @@ namespace TeamPartnerWebApp.Controllers {
         }
 
         // POST: Teams/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        //[Authorize]
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Team team) {
             if (ModelState.IsValid) {
                 if (team.Logo != null && team.Logo.Length > 0) {
-                    string uniqueFileName = Guid.NewGuid().ToString() + "_" + team.TeamName + ".png";
-                    string filePath = "wwwroot/resource/teams/" + uniqueFileName;
+                    string filePath = "wwwroot/resource/teams/" + team.TeamName + ".png";
                     using (var fileStream = new FileStream(filePath, FileMode.Create)) {
                         await team.Logo.CopyToAsync(fileStream);
                     }
-                    team.LogoPath = uniqueFileName;
+                    team.LogoPath = team.TeamName + ".png";
                 }
                 _context.Add(team);
                 await _context.SaveChangesAsync();
@@ -83,8 +80,8 @@ namespace TeamPartnerWebApp.Controllers {
             return View(team);
         }
 
-        // GET: Teams/Edit/5
-        //[Authorize]
+        // GET: Teams/Edit
+        [Authorize]
         public async Task<IActionResult> Edit(int? id) {
             if (id == null) {
                 return NotFound();
@@ -97,10 +94,8 @@ namespace TeamPartnerWebApp.Controllers {
             return View(team);
         }
 
-        // POST: Teams/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        //[Authorize]
+        // POST: Teams/Edit
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, Team team) {
@@ -112,12 +107,11 @@ namespace TeamPartnerWebApp.Controllers {
                     if (team.LogoPath != null) {
                         System.IO.File.Delete("wwwroot/resource/teams/" + team.LogoPath);
                     }
-                    string uniqueFileName = Guid.NewGuid().ToString() + "_" + team.TeamName + ".png";
-                    string filePath = "wwwroot/resource/teams/" + uniqueFileName;
+                    string filePath = "wwwroot/resource/teams/" + team.TeamName + ".png";
                     using (var fileStream = new FileStream(filePath, FileMode.Create)) {
                         await team.Logo.CopyToAsync(fileStream);
                     }
-                    team.LogoPath = uniqueFileName;
+                    team.LogoPath = team.TeamName + ".png";
                 }
                 try {
                     _context.Update(team);
@@ -134,8 +128,8 @@ namespace TeamPartnerWebApp.Controllers {
             return View(team);
         }
 
-        // GET: Teams/Delete/5
-        //[Authorize]
+        // GET: Teams/Delete
+        [Authorize]
         public async Task<IActionResult> Delete(int? id) {
             if (id == null) {
                 return NotFound();
@@ -150,8 +144,8 @@ namespace TeamPartnerWebApp.Controllers {
             return View(team);
         }
 
-        // POST: Teams/Delete/5
-        //[Authorize]
+        // POST: Teams/Delete
+        [Authorize]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id) {

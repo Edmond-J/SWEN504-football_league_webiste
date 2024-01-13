@@ -41,7 +41,7 @@ namespace TeamPartnerWebApp.Controllers {
         }
 
         // GET: Players/Create
-        //[Authorize]
+        [Authorize]
         public IActionResult Create() {
             //var teams = _context.Team.ToList();
             var teams = _context.Team.Select(t => new { Value = t.TeamId, Text = t.TeamName }).ToList();
@@ -50,9 +50,7 @@ namespace TeamPartnerWebApp.Controllers {
         }
 
         // POST: Players/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        //[Authorize]
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Player player) {
@@ -68,7 +66,7 @@ namespace TeamPartnerWebApp.Controllers {
             team.Players.Add(player);
             if (ModelState.IsValid) {
                 if (player.Image != null && player.Image.Length > 0) {
-                    string uniqueFileName = Guid.NewGuid().ToString() + "_" + player.PlayerName + ".png";
+                    string uniqueFileName = player.PlayerName + "-" + player.YearOfBirth + ".png";
                     string filePath = "wwwroot/resource/players/" + uniqueFileName;
                     using (var fileStream = new FileStream(filePath, FileMode.Create)) {
                         await player.Image.CopyToAsync(fileStream);
@@ -84,8 +82,8 @@ namespace TeamPartnerWebApp.Controllers {
             return View(player);
         }
 
-        // GET: Players/Edit/5
-        //[Authorize]
+        // GET: Players/Edit
+        [Authorize]
         public async Task<IActionResult> Edit(int? id) {
             if (id == null) {
                 return NotFound();
@@ -100,10 +98,8 @@ namespace TeamPartnerWebApp.Controllers {
             return View(player);
         }
 
-        // POST: Players/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        //[Authorize]
+        // POST: Players/Edit
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, Player player) {
@@ -115,7 +111,7 @@ namespace TeamPartnerWebApp.Controllers {
                     if (player.PhotoPath != null) {
                         System.IO.File.Delete("wwwroot/resource/players/" + player.PhotoPath);
                     }
-                    string uniqueFileName = Guid.NewGuid().ToString() + "_" + player.PlayerName + ".png";
+                    string uniqueFileName = player.PlayerName + "-" + player.YearOfBirth + ".png";
                     string filePath = "wwwroot/resource/players/" + uniqueFileName;
                     using (var fileStream = new FileStream(filePath, FileMode.Create)) {
                         await player.Image.CopyToAsync(fileStream);
@@ -137,8 +133,8 @@ namespace TeamPartnerWebApp.Controllers {
             return View(player);
         }
 
-        // GET: Players/Delete/5
-        //[Authorize]
+        // GET: Players/Delete
+        [Authorize]
         public async Task<IActionResult> Delete(int? id) {
             if (id == null) {
                 return NotFound();
@@ -153,8 +149,8 @@ namespace TeamPartnerWebApp.Controllers {
             return View(player);
         }
 
-        // POST: Players/Delete/5
-        //[Authorize]
+        // POST: Players/Delete
+        [Authorize]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id) {

@@ -3,7 +3,7 @@
 @{
     ViewData["Title"] = "Home Page";
 }
-
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Tenor+Sans&display=swap" rel="stylesheet">
 @* <div class="text-center">
     <h1 class="display-4">Welcome Edmond</h1>
     <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
@@ -60,9 +60,36 @@
             <br />
             <br />
     </div>
-    <div class="content-block right-block">
-@*         <p>Disclaimer:</p>
-        <p>The images on this site are taken from the official Premier League website and are for learning purposes only. </p>
-        <a href="https://www.premierleague.com/" target="_blank">https://www.premierleague.com/</a> *@
-    </div>
+<div class="content-block left-block">
+        <div class="image-frame">
+            <div class="left-header">
+                <div class="left-header_title">Premier League</div>
+            </div>
+        </div>
+       <table class="right-block_table">
+        <thead class="right-block_table_thread">
+        <tr>
+            <th>Pos</th>
+            <th>Club</th>
+            <th>PI</th>
+            <th>GD</th>
+            <th>Pts</th>
+        </tr>
+        </thead>
+    <tbody>
+            @for (int i = 0; i< Model.Count(); i++) {
+            <tr>
+                <td>@(i+1)</td>
+                        <td class="no-wrap">
+                        <img class="match-team_image" height="30" src="@Url.Content("~/resource/teams/"+Model.ElementAt(i).LogoPath)" alt="image"/>
+                        <span class="no-wrap">@Model.ElementAt(i).TeamName</span>
+                 </td>
+                <td>1</td>
+                <td>2</td> 
+                <td>35</td>
+            </tr>
+                }
+    </tbody>
+</table>
+</div>
 </div>
