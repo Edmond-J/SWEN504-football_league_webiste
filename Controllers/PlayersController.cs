@@ -66,7 +66,7 @@ namespace TeamPartnerWebApp.Controllers {
             team.Players.Add(player);
             if (ModelState.IsValid) {
                 if (player.Image != null && player.Image.Length > 0) {
-                    string uniqueFileName = player.PlayerName + "-" + player.YearOfBirth + ".png";
+                    string uniqueFileName = player.PlayerName + "-" + player.YearOfBirth + "-" + player.Team + ".png";
                     string filePath = "wwwroot/resource/players/" + uniqueFileName;
                     using (var fileStream = new FileStream(filePath, FileMode.Create)) {
                         await player.Image.CopyToAsync(fileStream);
@@ -111,7 +111,7 @@ namespace TeamPartnerWebApp.Controllers {
                     if (player.PhotoPath != null) {
                         System.IO.File.Delete("wwwroot/resource/players/" + player.PhotoPath);
                     }
-                    string uniqueFileName = player.PlayerName + "-" + player.YearOfBirth + ".png";
+                    string uniqueFileName = player.PlayerName + "-" + player.YearOfBirth + "-" + player.Team + ".png";
                     string filePath = "wwwroot/resource/players/" + uniqueFileName;
                     using (var fileStream = new FileStream(filePath, FileMode.Create)) {
                         await player.Image.CopyToAsync(fileStream);

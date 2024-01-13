@@ -5,6 +5,7 @@
 	ViewData["Title"] = "Create";
 }
 @using (Html.BeginForm("Create", "Players", FormMethod.Post, new { enctype = "multipart/form-data" })) {
+	@* allow to upload file binary data *@
 	<h1>Create</h1>
 
 	<h4>Player</h4>

@@ -84,9 +84,9 @@
                         <img class="match-team_image" height="30" src="@Url.Content("~/resource/teams/"+Model.ElementAt(i).LogoPath)" alt="image"/>
                         <span class="no-wrap">@Model.ElementAt(i).TeamName</span>
                  </td>
-                <td>1</td>
-                <td>2</td> 
-                <td>35</td>
+                <td>@(15)</td>
+                <td>@(17-i)</td> 
+                <td>@(35-i*2)</td>
             </tr>
                 }
     </tbody>

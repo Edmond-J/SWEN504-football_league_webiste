@@ -66,12 +66,14 @@ namespace TeamPartnerWebApp.Controllers {
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Team team) {
             if (ModelState.IsValid) {
+                string filePath = "wwwroot/resource/teams/" + team.TeamName + ".png";
                 if (team.Logo != null && team.Logo.Length > 0) {
-                    string filePath = "wwwroot/resource/teams/" + team.TeamName + ".png";
                     using (var fileStream = new FileStream(filePath, FileMode.Create)) {
                         await team.Logo.CopyToAsync(fileStream);
                     }
                     team.LogoPath = team.TeamName + ".png";
+                } else {
+                    team.LogoPath = "Logo-Missing.png";
                 }
                 _context.Add(team);
                 await _context.SaveChangesAsync();
@@ -104,7 +106,7 @@ namespace TeamPartnerWebApp.Controllers {
             }
             if (ModelState.IsValid) {
                 if (team.Logo != null && team.Logo.Length > 0) {
-                    if (team.LogoPath != null) {
+                    if (team.LogoPath != null && !team.LogoPath.Contains("Logo-Missing")) {
                         System.IO.File.Delete("wwwroot/resource/teams/" + team.LogoPath);
                     }
                     string filePath = "wwwroot/resource/teams/" + team.TeamName + ".png";
@@ -152,7 +154,9 @@ namespace TeamPartnerWebApp.Controllers {
             var team = await _context.Team.FindAsync(id);
             if (team != null) {
                 _context.Team.Remove(team);
-                System.IO.File.Delete("wwwroot/resource/teams/" + team.LogoPath);
+                if (team.Logo != null) {
+                    System.IO.File.Delete("wwwroot/resource/teams/" + team.LogoPath);
+                }
             }
 
             await _context.SaveChangesAsync();

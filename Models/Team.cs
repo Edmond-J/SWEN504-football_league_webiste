@@ -9,9 +9,16 @@ namespace TeamPartnerWebApp.Models {
         [Key]
         public int TeamId { get; set; }
 
+        [MinLength(3)]
+        [MaxLength(20)]
         public string TeamName { get; set; }
+
+        [MaxLength(20)]
         public string City { get; set; }
+
+        [MaxLength(30)]
         public string Coach { get; set; }
+
         public List<Player>? Players { get; set; }
         public string? LogoPath { get; set; }
 
