@@ -36,6 +36,11 @@
 			<div class="form-group">
                 <label asp-for="Logo" class="control-label">Logo</label>
                 <input asp-for="Logo" type="file"  class="form-control" />
+                    @if (!Model.LogoPath.Contains("Missing")) {
+                      <label class="control-label">Current Logo: @(Model.LogoPath)</label>
+                    } else {
+                      <span>Logo not set</span>
+                    }
                  <span asp-validation-for="Logo" class="text-danger"></span>
             </div>
             <div class="form-group">
