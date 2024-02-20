@@ -25,14 +25,12 @@ namespace TeamPartnerWebApp.Controllers {
 			if (id == null) {
 				return NotFound();
 			}
-
 			var player = await _context.Player
 				.Include(p => p.Team)
 				.FirstOrDefaultAsync(m => m.PlayerId == id);
 			if (player == null) {
 				return NotFound();
 			}
-
 			return View(player);
 		}
 
@@ -153,7 +151,9 @@ namespace TeamPartnerWebApp.Controllers {
 			var player = await _context.Player.FindAsync(id);
 			if (player != null) {
 				_context.Player.Remove(player);
-				System.IO.File.Delete(PhotoFolder + player.PhotoPath);
+				if (player.PhotoPath != null) {
+					System.IO.File.Delete(PhotoFolder + player.PhotoPath);
+				}
 			}
 
 			await _context.SaveChangesAsync();

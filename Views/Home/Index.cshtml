@@ -26,9 +26,13 @@
                     var guest = Model.ElementAt(i+1);
                     }
                 <span class="match-team">@host.TeamName.Substring(0,3).ToUpper()</span>
+               <a href="@Url.Action("Details", "Teams", new { id = Model.ElementAt(i).TeamId })">
                 <img class="match-team_image" height="40" src="@Url.Content("~/resource/teams/"+host.LogoPath)" alt="image"/>
+               </a>
                 <span class="match-time">@($"{random.Next(0, 24):D2}:{random.Next(0, 60):D2}")</span>
+               <a href="@Url.Action("Details", "Teams", new { id = Model.ElementAt(i+1).TeamId })">
                 <img class="match-team_image" height="40" src="@Url.Content("~/resource/teams/"+guest.LogoPath)" alt="image"/>
+               </a>
                 <span class="match-team">@guest.TeamName.Substring(0, 3).ToUpper()</span>
                 @{i++;}
                 </div>
@@ -38,7 +42,7 @@
     </div>
     <div class="content-block middle-block">
         <div class="news-block">
-            <div class="middle_image-frame">
+            <div class="image-frame">
                 <img class="middle_image" src="@Url.Content("~/resource/news/Richarlison.jpg")" alt="image"/>
             </div>
             <p class="news-title"> Best FPL team for Gameweek 21</p>
@@ -81,10 +85,12 @@
             <tr>
                 <td>@(i+1)</td>
                         <td class="no-wrap">
+                        <a href="@Url.Action("Details", "Teams", new {id = Model.ElementAt(i).TeamId})">
                         <img class="match-team_image" height="30" src="@Url.Content("~/resource/teams/"+Model.ElementAt(i).LogoPath)" alt="image"/>
+                        </a>
                         <span class="no-wrap">@Model.ElementAt(i).TeamName</span>
                  </td>
-                <td>@(15)</td>
+                <td>15</td>
                 <td>@(17-i)</td> 
                 <td>@(35-i*2)</td>
             </tr>
