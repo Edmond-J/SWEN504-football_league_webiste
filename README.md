@@ -2,7 +2,7 @@
 ## Introduction:
 This is an assignment of **SWEN504 Individual Project.**   
 The objective of this project is to develop an official-like website for a football league, where users can browse information about the league's matches, standings and news. Administrators can also manage club and player profiles after login and creating, reading, updating and deleting.  
-This app is deployed on Azure App Service and data is stored on Azure SQL DB
+This app is deployed on Azure App Service and data is stored on Azure SQL DB.  
 [Visit the web app on Azure](https://teamwebapp20240112194902.azurewebsites.net/)  
 >**Login Info**  
 It requests signing in to perform deleting, editing, updating operation, you can use the existing administrator account:  
@@ -52,7 +52,7 @@ team details
 ### Steps: ###   
 To run the source code in your local machine, please follow the steps below:
 1. Download (or pull) the repository from the github :   
-https://github.com/Edmond-J/TeamPartnerWebApp
+https://github.com/Edmond-J/SWEN504-team_partner
 2. Configure the database (two options):
 >- Option 1: download the .mdf, and .ldf files from the link below and move them to your C:/User/YourUserName :  
 https://drive.google.com/drive/folders/1YtRDedi-jy88hr14BPlDM27kdw_WqXz2?usp=sharing
