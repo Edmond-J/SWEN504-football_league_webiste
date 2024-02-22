@@ -51,8 +51,7 @@ team details
 ## Installation
 ### Steps: ###   
 To run the source code in your local machine, please follow the steps below:
-1. Download (or pull) the repository from the github :   
-https://github.com/Edmond-J/SWEN504-team_partner
+1. Clone the repository from the github  
 2. Configure the database (two options):
 >- Option 1: download the .mdf, and .ldf files from the link below and move them to your C:/User/YourUserName :  
 https://drive.google.com/drive/folders/1YtRDedi-jy88hr14BPlDM27kdw_WqXz2?usp=sharing
