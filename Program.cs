@@ -1,9 +1,11 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using TeamPartnerWebApp.Data;
+using FootballLeagueWebsite.Data;
 
-namespace TeamPartnerWebApp {
+namespace FootballLeagueWebsite {
+
     public class Program {
+
         public static void Main(string[] args) {
             var builder = WebApplication.CreateBuilder(args);
 

@@ -1,10 +1,10 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
-using TeamPartnerWebApp.Data;
-using TeamPartnerWebApp.Models;
+using FootballLeagueWebsite.Data;
+using FootballLeagueWebsite.Models;
 
-namespace TeamPartnerWebApp.Controllers {
+namespace FootballLeagueWebsite.Controllers {
 
 	public class HomeController : Controller {
 		private readonly ILogger<HomeController> _logger;

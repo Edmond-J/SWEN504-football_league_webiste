@@ -1,4 +1,4 @@
-﻿@model TeamPartnerWebApp.Models.Player
+﻿@model FootballLeagueWebsite.Models.Player
 
 @{
     ViewData["Title"] = "Edit Me";
@@ -46,7 +46,7 @@
                 @* <input asp-for="Position" class="form-control" /> *@
                 <select asp-for="Position" class="form-control form-select">
                 <option value="">Select Position</option>
-                    @foreach (var value in Enum.GetValues(typeof(TeamPartnerWebApp.Models.Position))) {
+                    @foreach (var value in Enum.GetValues(typeof(FootballLeagueWebsite.Models.Position))) {
                     <option value="@value">@value</option>
                     }
                 </select>

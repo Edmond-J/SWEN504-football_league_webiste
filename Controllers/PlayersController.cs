@@ -2,10 +2,10 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.EntityFrameworkCore;
-using TeamPartnerWebApp.Data;
-using TeamPartnerWebApp.Models;
+using FootballLeagueWebsite.Data;
+using FootballLeagueWebsite.Models;
 
-namespace TeamPartnerWebApp.Controllers {
+namespace FootballLeagueWebsite.Controllers {
 
 	public class PlayersController : Controller {
 		private readonly ApplicationDbContext _context;

@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace TeamPartnerWebApp.Data.Migrations
+namespace FootballLeagueWebsite.Data.Migrations
 {
     /// <inheritdoc />
     public partial class AddTeamModel : Migration

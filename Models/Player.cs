@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace TeamPartnerWebApp.Models {
+namespace FootballLeagueWebsite.Models {
 
     public enum Position {
         Forward, Defender, Midfielder, Goalkeeper

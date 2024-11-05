@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using TeamPartnerWebApp.Models;
+using FootballLeagueWebsite.Models;
 
-namespace TeamPartnerWebApp.Data {
+namespace FootballLeagueWebsite.Data {
 
     public class ApplicationDbContext : IdentityDbContext {
 
@@ -10,8 +10,8 @@ namespace TeamPartnerWebApp.Data {
             : base(options) {
         }
 
-        public DbSet<TeamPartnerWebApp.Models.Player> Player { get; set; } = default!;
-        public DbSet<TeamPartnerWebApp.Models.Team> Team { get; set; } = default!;
+        public DbSet<Player> Player { get; set; } = default!;
+        public DbSet<Team> Team { get; set; } = default!;
 
         //protected override void OnModelCreating(ModelBuilder modelBuilder) {
         //	base.OnModelCreating(modelBuilder);

@@ -1,10 +1,10 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using TeamPartnerWebApp.Data;
-using TeamPartnerWebApp.Models;
+using FootballLeagueWebsite.Data;
+using FootballLeagueWebsite.Models;
 
-namespace TeamPartnerWebApp.Controllers {
+namespace FootballLeagueWebsite.Controllers {
 
 	public class TeamsController : Controller {
 		private readonly ApplicationDbContext _context;
